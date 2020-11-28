@@ -1,0 +1,18 @@
+The elevators starts - 1st floor, 10 passengers, 
+
+Each passenger has a destination(floor at random)
+
+(The elevator will always start from the 1st floor 
+and only travel up - Passengers can not board the elevator
+from any other floor, especially in the event that their 
+desitantion has already been passed)
+
+The passenger exits when the elevator reaches their 
+destination
+
+1 elevator - 1 thread
+elevator thread sleeps for 1 second per floor
+
+There are 7 other floors (2-8)
+
+
