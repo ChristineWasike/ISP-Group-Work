@@ -8,7 +8,7 @@
 //globals
 int elevator_state; // -1 (stop), 0(up), 1(down)
 int floor_number; // current floor
-int floor_numbers[10]; // array for people's destination floors
+int floor_numbers[10] = {2, 2, 4, 5, 6, 7}; // array for people's destination floors
 int i; 
 pthread_t tid[10];
 
@@ -71,10 +71,9 @@ int elevator() {
 
 int main() {
 
-    for (int i = 0; i < 9; i++) {
-        pthread_create(&tid, NULL, elevator, (void *)&tid);
-    }
-
+    // for (int i = 1; i <= 10; i++) {
+    //     pthread_create(&tid[i], NULL, loadPassengers, NULL);
+    // }
     // for (int i = 1; i <= 10; i++)
         // pthread_join(tid[i], NULL);
 
