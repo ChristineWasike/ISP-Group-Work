@@ -52,6 +52,8 @@ int elevator() {
 
         // [2, 2, 4, 5, 6, 7]
         // Possible use of threads
+        // Add a thread that check that the condition in this for loop is satisfied
+        // at it end, go back to the thread that changes the floor levels
         for (i = 0; i < MAX_PEOPLE; i++) {
             if (floor_numbers[i] == floor_number) { // if person's destination is reached
                 elevator_state = -1; // stop moving
