@@ -53,12 +53,13 @@ void * elevator() {
         printf("|   %d   |\n", current_floor);
         printf("o-------o\n\n");
         elevator_state = true; // start moving
-        sleep(3); // simulate elevator movement
+        sleep(1); // simulate elevator movement
 
         for (i = 0; i < MAX_PEOPLE; i++) { // loop through people's floor numbers
             if (floor_numbers[i] == current_floor) { // if person's destination is reached
                 elevator_state = false; // stop moving
-                sleep(2); // simulate time taken for a person to get off the elevator
+                // printf(".....\n");
+                sleep(1); // simulate time taken for a person to get off the elevator
                 printf("Person %d with thread id %ld has arrived.\n", i + 1, person_tid[i]); // offload passenger
             }
             elevator_state = true; // continue moving
@@ -68,9 +69,10 @@ void * elevator() {
     elevator_state = false; // when 8th floor is reached, end simulation
     printf("\nThe simulation has ended. Goodbye!\n");
 
+    pthread_exit(NULL); // exit calling thread
     pthread_mutex_unlock(&lock);
 
-    pthread_exit(NULL); // exit calling thread
+    
 
 }
 

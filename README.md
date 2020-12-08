@@ -16,3 +16,4 @@ Given Edward
 - Attach the recorded zoom calls here(as links to drive videos)
 - Working to dividin the logic into methods we can each individually work on
 :] That is all for now...
+()[]
