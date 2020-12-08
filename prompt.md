@@ -24,3 +24,4 @@ The simulation is of people using the lift to arrive at their floor of a 8-story
 
 
 // The Logic
+- Add hyphens or (=====) to illustrate the floors

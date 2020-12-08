@@ -56,6 +56,7 @@ void *elevator(){
                 elevator_state = -1; // stop moving
                 sleep(1);
                 printf("Person %d with thread id %ld has arrived.\n", i + 1, person_tid[i]); // offload passenger
+                // pthread_exit(&person_tid[i]);
             }
         }
         elevator_state = 0; // keep moving
@@ -64,7 +65,10 @@ void *elevator(){
     elevator_state = -1; // if 8th floor is reached, end simulation
     printf("\nThe simulation has ended!\n");
 
-    pthread_mutex_unlock(&lock);
+    pthread_exit(0);
+    int value = pthread_mutex_unlock(&lock);
+    printf("Unlock done: %d\n", value);
+    
 }
 
 int main(){
@@ -75,7 +79,9 @@ int main(){
         return -1;
     }
 
+    // elevator();
     pthread_create(&elevator_tid, NULL, elevator, NULL);
+
 
     for (int i = 0; i < 10; i++){
         err = pthread_create(&person_tid[i], NULL, elevator, NULL);
@@ -86,10 +92,9 @@ int main(){
     for (int i = 0; i < 10; i++){
         pthread_join(person_tid[i], NULL);
     }
-
-    pthread_exit(NULL);
-
+    pthread_join(elevator_tid, NULL);
+    
     pthread_mutex_destroy(&lock);
-
+    pthread_exit(0);
     return 0;
 }
